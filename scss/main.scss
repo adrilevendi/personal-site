@@ -1,0 +1,187 @@
+
+html{
+        --hero-h1-y: 1;
+
+}
+
+@mixin font($font-family, $font-file) {
+  @font-face {
+    font-family: $font-family;
+    src: url($font-file+'.eot');
+    src: url($font-file+'.eot?#iefix') format('embedded-opentype'),
+         url($font-file+'.woff') format('woff'),
+         url($font-file+'.ttf') format('truetype'),
+         url($font-file+'.otf') format('opentype'),
+         url($font-file+'.svg#aller') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+
+@include font('Bagnard Sans Regular', '../fonts/BagnardSans');
+body{
+  font-family: 'Bagnard Sans Regular', sans-serif;
+}
+*{
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+h1 {
+	font-family: 'Bagnard Sans Regular';
+}
+
+$humanskin: #FFB38F;
+$lpurple: #A64AC9;
+
+
+.bg-lpurple {
+	background-color: $lpurple;
+}
+
+.bg-humanskin {
+	background-color: $humanskin;
+}
+
+.lpurple {
+	color: $lpurple;
+}
+
+.humanskin {
+	color: $humanskin;
+}
+
+#hero {
+	height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0 4rem;
+    overflow: hidden;
+
+    h1 {
+    	font-size: 5.3125rem;
+    	position: relative;
+    	&:after {
+    		background: white;
+    		position: absolute;
+    		left: 0;
+    		width: 100%;
+    		height: 100%;
+    		content: '';
+    		transform-origin:0 100%;
+    		transform: scaleY(var(--hero-h1-y));
+    	}
+    }
+
+    .animate-heading {
+      opacity: 1;
+    }
+
+.scene-wrapper {
+  width: 200px;
+}
+    .scene {
+  width: 200px;
+  height: 200px;
+  perspective: 600px;
+  margin-right: 4rem;
+  // position: fixed;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+      transform: rotateY(45deg) rotateZ(-27deg);
+    /* transform: rotateY(-99deg) rotateZ(101deg); */
+    transition: 0.8s ease-out;
+    animation-name: rotateCube, cubeBg;
+    animation-duration: 12s, 8s;
+  animation-delay: 0, 15s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+      animation-timing-function: ease-in-out;
+}
+
+.cube__face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid $humanskin;
+  
+}
+
+.cube__face--front  { transform: rotateY(  0deg) translateZ(100px); }
+.cube__face--right  { transform: rotateY( 90deg) translateZ(100px); }
+.cube__face--back   { transform: rotateY(180deg) translateZ(100px); }
+.cube__face--left   { transform: rotateY(-90deg) translateZ(100px); }
+.cube__face--top    { transform: rotateX( 90deg) translateZ(100px); }
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+.cube.show-front  { transform: translateZ(-100px) rotateY(   0deg); }
+.cube.show-right  { transform: translateZ(-100px) rotateY( -90deg); }
+.cube.show-back   { transform: translateZ(-100px) rotateY(-180deg); }
+.cube.show-left   { transform: translateZ(-100px) rotateY(  90deg); }
+.cube.show-top    { transform: translateZ(-100px) rotateX( -90deg); }
+.cube.show-bottom { transform: translateZ(-100px) rotateX(  90deg); }
+
+}
+
+
+@keyframes rotateCube {
+
+  from {
+       transform: rotateY(20deg) rotate(60deg);
+  }
+
+
+
+  to {
+      transform: rotateY(300deg) rotate(-260deg);
+      
+  }
+
+}
+
+
+@keyframes cubeBg {
+  47% {
+      background: none;
+  }
+
+  48% {
+      background: $humanskin;
+  }
+
+  49% {
+      background: none;
+  }
+
+
+  51% {
+      background: $humanskin;
+  }
+
+
+   52% {
+      background: none;
+  }
+}
+
+
+#contact {
+  height: 100vh;
+  background: $lpurple;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  a {
+    text-decoration: none;
+  }
+}

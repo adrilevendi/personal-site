@@ -1,0 +1,171 @@
+html {
+  --hero-h1-y: 1;
+}
+
+@font-face {
+  font-family: "Bagnard Sans Regular";
+  src: url("../fonts/BagnardSans.eot");
+  src: url("../fonts/BagnardSans.eot?#iefix") format("embedded-opentype"), url("../fonts/BagnardSans.woff") format("woff"), url("../fonts/BagnardSans.ttf") format("truetype"), url("../fonts/BagnardSans.otf") format("opentype"), url("../fonts/BagnardSans.svg#aller") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "Bagnard Sans Regular", sans-serif;
+}
+
+* {
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-family: "Bagnard Sans Regular";
+}
+
+.bg-lpurple {
+  background-color: #A64AC9;
+}
+
+.bg-humanskin {
+  background-color: #FFB38F;
+}
+
+.lpurple {
+  color: #A64AC9;
+}
+
+.humanskin {
+  color: #FFB38F;
+}
+
+#hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4rem;
+  overflow: hidden;
+}
+#hero h1 {
+  font-size: 5.3125rem;
+  position: relative;
+}
+#hero h1:after {
+  background: white;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  transform-origin: 0 100%;
+  transform: scaleY(var(--hero-h1-y));
+}
+#hero .animate-heading {
+  opacity: 1;
+}
+#hero .scene-wrapper {
+  width: 200px;
+}
+#hero .scene {
+  width: 200px;
+  height: 200px;
+  perspective: 600px;
+  margin-right: 4rem;
+}
+#hero .cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(45deg) rotateZ(-27deg);
+  /* transform: rotateY(-99deg) rotateZ(101deg); */
+  transition: 0.8s ease-out;
+  animation-name: rotateCube, cubeBg;
+  animation-duration: 12s, 8s;
+  animation-delay: 0, 15s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+#hero .cube__face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid #FFB38F;
+}
+#hero .cube__face--front {
+  transform: rotateY(0deg) translateZ(100px);
+}
+#hero .cube__face--right {
+  transform: rotateY(90deg) translateZ(100px);
+}
+#hero .cube__face--back {
+  transform: rotateY(180deg) translateZ(100px);
+}
+#hero .cube__face--left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+#hero .cube__face--top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+#hero .cube__face--bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+#hero .cube.show-front {
+  transform: translateZ(-100px) rotateY(0deg);
+}
+#hero .cube.show-right {
+  transform: translateZ(-100px) rotateY(-90deg);
+}
+#hero .cube.show-back {
+  transform: translateZ(-100px) rotateY(-180deg);
+}
+#hero .cube.show-left {
+  transform: translateZ(-100px) rotateY(90deg);
+}
+#hero .cube.show-top {
+  transform: translateZ(-100px) rotateX(-90deg);
+}
+#hero .cube.show-bottom {
+  transform: translateZ(-100px) rotateX(90deg);
+}
+
+@keyframes rotateCube {
+  from {
+    transform: rotateY(20deg) rotate(60deg);
+  }
+  to {
+    transform: rotateY(300deg) rotate(-260deg);
+  }
+}
+@keyframes cubeBg {
+  47% {
+    background: none;
+  }
+  48% {
+    background: #FFB38F;
+  }
+  49% {
+    background: none;
+  }
+  51% {
+    background: #FFB38F;
+  }
+  52% {
+    background: none;
+  }
+}
+#contact {
+  height: 100vh;
+  background: #A64AC9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#contact a {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=main.css.map */
