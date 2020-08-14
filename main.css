@@ -1,4 +1,5 @@
 html {
+  scroll-behavior: smooth;
   --hero-h1-y: 1;
 }
 
@@ -39,19 +40,43 @@ h1 {
   color: #FFB38F;
 }
 
-#hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 4rem;
-  overflow: hidden;
+a:hover {
+  color: inherit;
 }
-#hero h1 {
+
+::-webkit-scrollbar {
+  width: 15px;
+  appearance: none;
+  display: none;
+}
+
+.loading-screen {
+  position: absolute;
+  bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  background-color: #FFB38F;
+  width: 100%;
+  height: 0%;
+}
+
+.load-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.animate-heading {
   font-size: 5.3125rem;
   position: relative;
 }
-#hero h1:after {
+.animate-heading:after {
   background: white;
   position: absolute;
   left: 0;
@@ -61,17 +86,44 @@ h1 {
   transform-origin: 0 100%;
   transform: scaleY(var(--hero-h1-y));
 }
-#hero .animate-heading {
+.animate-heading.bg-lpurple:after {
+  background: #A64AC9;
+}
+
+.animate-heading {
   opacity: 1;
+}
+
+#hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4rem;
+  overflow: hidden;
+}
+#hero .text-block {
+  flex-direction: row;
+}
+@media only screen and (max-width: 576px) {
+  #hero .text-block {
+    flex-direction: column;
+  }
 }
 #hero .scene-wrapper {
   width: 200px;
+  margin-right: 6%;
 }
 #hero .scene {
   width: 200px;
   height: 200px;
   perspective: 600px;
   margin-right: 4rem;
+}
+@media only screen and (max-width: 576px) {
+  #hero .scene {
+    transform: scale(0.7);
+  }
 }
 #hero .cube {
   width: 100%;
@@ -158,7 +210,6 @@ h1 {
 }
 #contact {
   height: 100vh;
-  background: #A64AC9;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -166,6 +217,138 @@ h1 {
 }
 #contact a {
   text-decoration: none;
+}
+@media only screen and (max-width: 576px) {
+  #contact a h2 {
+    font-size: 1.5rem !important;
+  }
+}
+
+#discoverProjects {
+  height: 100vh;
+}
+#discoverProjects a {
+  text-decoration: none;
+}
+@media only screen and (max-width: 576px) {
+  #discoverProjects #projectsLinkWrapper span {
+    font-size: 4rem !important;
+  }
+}
+
+#projects {
+  height: 100vh;
+  padding: 3.5rem 0;
+  overflow: hidden;
+}
+@media only screen and (max-width: 576px) {
+  #projects {
+    overflow: scroll;
+  }
+}
+#projects a {
+  text-decoration: none;
+}
+#projects .projects {
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (max-width: 576px) {
+  #projects .projects {
+    flex-direction: column;
+  }
+}
+#projects .projects--item {
+  position: relative;
+  display: flex;
+}
+@media only screen and (max-width: 576px) {
+  #projects .projects--item:not(:first-child) {
+    margin-top: 5rem;
+  }
+}
+#projects .projects--item__inner {
+  text-transform: uppercase;
+  min-height: 600px;
+  -webkit-backface-visibility: hidden;
+  color: #A64AC9;
+  transition: transform 1s cubic-bezier(0, 0, 0.01, 1.06);
+  position: relative;
+  padding: 7vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 430px;
+  cursor: pointer;
+}
+#projects .projects--item__inner h2 {
+  font-size: 45px;
+  text-align: left;
+  transition: transform 1s ease;
+}
+#projects .projects--item__inner svg path {
+  fill: #A64AC9;
+}
+#projects .projects--item::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  height: 100%;
+  width: 1px;
+  background: #A64AC9;
+}
+#projects .projects--item:first-child::after {
+  display: none;
+}
+@media only screen and (max-width: 576px) {
+  #projects .projects--item::after {
+    display: none;
+  }
+}
+#projects .projects--item:hover .projects--item__inner {
+  transform: translateY(-16rem);
+}
+#projects .projects--number {
+  font-size: 60vh !important;
+  line-height: 42vh;
+  margin-bottom: 6rem;
+  color: #FFB38F;
+}
+@media only screen and (max-width: 576px) {
+  #projects .projects--number {
+    font-size: 30vh !important;
+    line-height: initial;
+  }
+}
+#projects .projects--arrow {
+  margin-top: 15vh;
+  width: 14vh;
+}
+
+#project .project-title {
+  font-size: 85px;
+  letter-spacing: -0.55;
+  color: #A64AC9;
+}
+#project .project-description {
+  line-height: 2.67;
+  font-size: 1rem;
+}
+#project .project-link {
+  font-size: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+@media only screen and (max-width: 576px) {
+  h1 {
+    font-size: 3.2rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
